@@ -1,7 +1,9 @@
+import WelcomeHeader from './components/welcome-header';
+
 function App() {
   return (
     <div className="container">
-      <h1>Here is my app!</h1>
+      <WelcomeHeader />
     </div>
   );
 }
