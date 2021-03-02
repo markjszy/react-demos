@@ -8,7 +8,7 @@ let e = React.createElement;
 
 export default class WelcomeHeader extends React.Component {
     render() {
-        return e('div', {class: 'card'}, 
+        return e('div', {className: 'card'}, 
         e('h1', {}, `Welcome to the application!`));
     }
 }
