@@ -1,3 +1,5 @@
+import _ from 'lodash'; // *explicitly* import required module
+
 function component() {
     const element = document.createElement('div');
   
