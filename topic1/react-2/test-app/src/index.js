@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// see https://reactjs.org/docs/strict-mode.html for information about strict mode
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode> 
     <App />
   </React.StrictMode>,
   document.getElementById('root')
