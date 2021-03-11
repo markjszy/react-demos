@@ -25,6 +25,11 @@ export default class EmployeeEntryForm extends React.Component {
     }
 
     submitForm() {
+        // note -- consider moving state up to the parent and 
+        // simply having this component take `props` for its form elements.
+        // if you were to do that, you would have the parent component
+        // house the fully-fledged 'input change' and 'submit form' handlers, passed
+        // down to this component
         this.props.onSubmit(this.state);
         this.resetForm();
     }
