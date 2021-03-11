@@ -1,5 +1,6 @@
 import React from 'react';
 import EmployeeCard from './employee-card';
+import EmployeeEntryForm from './employee-entry-form';
 
 const mockEmployeeData = [
     {
@@ -39,6 +40,8 @@ class EmployeeWidget extends React.Component {
         this.state = {
             employees: []
         }
+
+        this.addNewEmployee = this.addNewEmployee.bind(this);
     }
 
     componentDidMount() {
@@ -49,11 +52,22 @@ class EmployeeWidget extends React.Component {
         }, 2000);
     }
 
+    addNewEmployee(employee) {
+        const employees = this.state.employees.slice();
+        // just generate a simple id for additions...
+        employee.id = employees.length;
+        this.setState({ employees: [...employees, employee]});
+    }
+
     render() {
         const employeeCards = this.state.employees.map(employee => <EmployeeCard {...employee} key={employee.id} />)
         return (
             <div>
-                {employeeCards}
+                <h1>Employee Widget</h1>
+                <EmployeeEntryForm onSubmit={this.addNewEmployee} />
+                <div>
+                    {employeeCards}
+                </div>
             </div>
         );
     }
