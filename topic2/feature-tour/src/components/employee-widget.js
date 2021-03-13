@@ -53,10 +53,12 @@ class EmployeeWidget extends React.Component {
     }
 
     addNewEmployee(employee) {
-        const employees = this.state.employees.slice();
-        // just generate a simple id for additions...
-        employee.id = employees.length;
-        this.setState({ employees: [...employees, employee]});
+        this.setState((state) => {
+            const employees = state.employees.slice();
+            // just generate a simple id for additions...
+            employee.id = employees.length;
+            return { employees: [...employees, employee]};  
+        });
     }
 
     render() {
