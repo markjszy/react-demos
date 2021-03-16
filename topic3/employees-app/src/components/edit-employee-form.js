@@ -1,14 +1,15 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-export default class NewEmployeeForm extends React.Component {
+export default class EditEmployeeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            title: '',
-            department: ''
+            firstName: props.firstName,
+            lastName: props.lastName,
+            title: props.title,
+            department: props.department,
+            _id: props._id
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,7 +27,7 @@ export default class NewEmployeeForm extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.addNewEmployee(this.state);
+        this.props.updateEmployee(this.state);
         event.preventDefault();
     }
 
@@ -45,13 +46,13 @@ export default class NewEmployeeForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="titleInput">Title</label>
-                    <input name="title" type="text" value={this.state.title} className="form-control" id="titleInput" onChange={this.handleChange} />
+                    <input name="title" value={this.state.title} type="text" className="form-control" id="titleInput" onChange={this.handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="departmentInput">Department</label>
-                    <input name="department" type="text" value={this.state.department} className="form-control" id="departmentInput" onChange={this.handleChange} />
+                    <input name="department" value={this.state.department} type="text" className="form-control" id="departmentInput" onChange={this.handleChange} />
                 </div>
-                <button type="submit" className="btn btn-primary">Add Employee</button>
+                <button type="submit" className="btn btn-primary">Update</button>
             </form>
         );
     }

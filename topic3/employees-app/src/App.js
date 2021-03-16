@@ -14,11 +14,14 @@ export default class App extends React.Component {
 
     this.addNewEmployee = this.addNewEmployee.bind(this);
     this.deleteEmployee = this.deleteEmployee.bind(this);
+    this.updateEmployee = this.updateEmployee.bind(this);
   }
 
   render() {
     let employeeCards = this.state.employees.map(employee => {
-      return <EmployeeCard {...employee} key={employee._id} deleteEmployee={this.deleteEmployee} />
+      return <EmployeeCard {...employee} key={employee._id} 
+        deleteEmployee={this.deleteEmployee} 
+        updateEmployee={this.updateEmployee} />
     });
         
     return (
@@ -56,6 +59,24 @@ export default class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(employee)
+    }).then(() => {
+      this._refreshData();
+    });
+  }
+
+  updateEmployee(employee) {
+    let updatedWithoutId = {
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      title: employee.title,
+      department: employee.department
+    }
+    return fetch(`${EMPLOYEES_ENDPOINT}/${employee._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedWithoutId)
     }).then(() => {
       this._refreshData();
     });
