@@ -1,6 +1,6 @@
 import React from 'react';
 import EmployeeCard from './components/employee-card';
-import NewEmployeeForm from './components/new-employee-form';
+import { NewEmployeeForm } from './components/new-employee-form';
 import { employeeService } from './services/employee-service';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 

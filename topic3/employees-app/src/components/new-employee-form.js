@@ -1,58 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-export default class NewEmployeeForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            title: '',
-            department: ''
-        }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+/**
+ * Contrast this with the edit form...in this, we demo use of functional components
+ * and hooks (useState)
+ */
+export const NewEmployeeForm = (props) => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [title, setTitle] = useState('');
+    const [department, setDepartment] = useState('');
 
-    handleChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
-    handleSubmit(event) {
-        this.props.addNewEmployee(this.state);
+    const handleSubmit = (event) => {
+        props.addNewEmployee({firstName, lastName, title, department});
         event.preventDefault();
     }
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
+    return (
+        <form onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label htmlFor="firstNameInput">First name</label>
+                <input name="firstName" value={firstName} type="text" className="form-control" id="firstNameInput" 
+                    onChange={(e) => setFirstName(e.target.value)} />
+            </div>
+            <div className="form-group">
                 <div className="form-group">
-                    <label htmlFor="firstNameInput">First name</label>
-                    <input name="firstName" value={this.state.firstName} type="text" className="form-control" id="firstNameInput" onChange={this.handleChange} />
+                    <label htmlFor="lastNameInput">Last name</label>
+                    <input name="lastName" value={lastName} type="text" className="form-control" id="lastNameInput" 
+                    onChange={(e) => setLastName(e.target.value)} />
                 </div>
-                <div className="form-group">
-                    <div className="form-group">
-                        <label htmlFor="lastNameInput">Last name</label>
-                        <input name="lastName" value={this.state.lastName} type="text" className="form-control" id="lastNameInput" onChange={this.handleChange} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="titleInput">Title</label>
-                    <input name="title" type="text" value={this.state.title} className="form-control" id="titleInput" onChange={this.handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="departmentInput">Department</label>
-                    <input name="department" type="text" value={this.state.department} className="form-control" id="departmentInput" onChange={this.handleChange} />
-                </div>
-                <button type="submit" className="btn btn-primary">Add Employee</button>
-            </form>
-        );
-    }
+            </div>
+            <div className="form-group">
+                <label htmlFor="titleInput">Title</label>
+                <input name="title" type="text" value={title} className="form-control" id="titleInput" 
+                    onChange={(e) => setTitle(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="departmentInput">Department</label>
+                <input name="department" type="text" value={department} className="form-control" id="departmentInput" 
+                    onChange={(e) => setDepartment(e.target.value)} />
+            </div>
+            <button type="submit" className="btn btn-primary">Add Employee</button>
+        </form>
+    );
 }
