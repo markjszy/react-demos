@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 function App() {
+  const handleClick = () => { console.log('Heard click!'); }
+
   return (
     <Container>
       <Row>
@@ -13,7 +15,7 @@ function App() {
           <h1>App Demo</h1>
         </Col>
         <Col>
-          <Button variant="primary" size="lg">This is a React Bootstrap button!</Button>
+          <Button variant="primary" size="lg" onClick={handleClick}>This is a React Bootstrap button!</Button>
         </Col>
       </Row>
     </Container>
