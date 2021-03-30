@@ -1,0 +1,15 @@
+{
+  "name": "basic-example-redux-toolkit",
+  "version": "1.0.0",
+  "description": "From [React Getting Started docs](https://redux.js.org/introduction/getting-started#redux-toolkit-example)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1"
+  }
+}
